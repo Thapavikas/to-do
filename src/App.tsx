@@ -4,7 +4,7 @@ import TodoList from './components/TodoList'
 
 const App = () => {
   return (
-    <div className=' font-sans bg-white  text-black ' >
+    <div className=' font-sans bg-black  text-white ' >
       <TodoList/>
     </div>
   )
