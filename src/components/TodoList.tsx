@@ -28,7 +28,7 @@ const TodoList = () => {
           tasks.map((t, index) => (
             <section
               key={index}
-              className="text-xl p-5 gap-y-3 border border-white rounded-md mt-4  w-full"
+              className="text-xl p-5 gap-y-3 border border-black rounded-md mt-4  w-full"
             >
               <div className="flex justify-between items-center">
                 <div>
