@@ -37,7 +37,7 @@ const SubmitButton:React.FC<SubmitButtonProps> = ({ setTasks  }) => {
       {showForm && (
         <form
           onSubmit={submitHandle}
-          className=" inset-0 flex items-end h-screen w-screen justify-center bg-black text-black bg-opacity-50"
+          className=" font-sans inset-0 flex items-end justify-center absolute bg-white text-black bg-opacity-55"
         >
           <div className="bg-white p-6 rounded-lg w-full max-w-2xl">
             <div className="flex justify-between mb-3">

@@ -22,8 +22,8 @@ const TodoList = () => {
   };
 
   return (
-    <div className=" flex flex-col h-screen  p-4">
-      <h1 className="p-3 text-3xl font-bold">Todo App</h1>
+    <div className=" flex flex-col h-screen  p-3">
+      <h1 className="p-3 text-3xl font-bold">Todo List</h1>
       <div className="overflow-auto max-h-[350px]  pb-20">
         {/* Task Section */}
         {tasks.length === 0 ? (
@@ -32,7 +32,7 @@ const TodoList = () => {
           tasks.map((t, index) => (
             <section
               key={index}
-              className="text-xl p-5 gap-y-3 border rounded-md mt-4 w-full max-w-lg md:max-w-auto sm:max-w-full"
+              className="text-xl p-5 gap-y-3 border border-black rounded-md mt-4 w-full max-w-lg md:max-w-auto sm:max-w-full"
             >
               <div className="flex justify-between items-center">
                 <div>
@@ -68,7 +68,7 @@ const TodoList = () => {
               key={index}
               className="w-full max-w-lg md:max-w-auto sm:max-w-full mt-6"
             >
-              <div className="p-5 border rounded-md">
+              <div className="p-5 border border-black opacity-45 rounded-md">
                 <div className="flex justify-between items-center">
                   <div>
                     <h1>{t.task}</h1>
