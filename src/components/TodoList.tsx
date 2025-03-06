@@ -1,10 +1,19 @@
 import { useState } from "react";
 import SubmitButton from "./SubmitButton";
+import { FaRegCircle } from "react-icons/fa";
+import { FaRegCircleCheck } from "react-icons/fa6";
 
 const TodoList = () => {
-  const [tasks, setTasks] = useState<{ task: string; description: string }[]>([]);
-  const [completeTasks, setCompleteTasks] = useState<{ task: string; description: string }[]>([]);
-  const [editTask, setEditTask] = useState<{ task: string; description: string } | null>(null);
+  const [tasks, setTasks] = useState<{ task: string; description: string }[]>(
+    []
+  );
+  const [completeTasks, setCompleteTasks] = useState<
+    { task: string; description: string }[]
+  >([]);
+  const [editTask, setEditTask] = useState<{
+    task: string;
+    description: string;
+  } | null>(null);
   const [editIndex, setEditIndex] = useState<number | null>(null);
 
   // Move task to completed
@@ -20,31 +29,36 @@ const TodoList = () => {
 
   return (
     <div className="flex flex-col h-screen p-3">
-      <h1 className="p-3 text-3xl font-bold">Todo List</h1>
-      <div className="overflow-auto max-h-[350px] pb-20">
+      <div className="overflow-auto max-h-[500px] pb-24">
+        <h1 className="text-3xl font-bold">Todo App</h1>
         {tasks.length === 0 ? (
-          <p className="text-xl">No task added! Add task</p>
+          <p className=" mt-3 text-xl">No task added! Add task...</p>
         ) : (
           tasks.map((t, index) => (
             <section
               key={index}
-              className="text-xl p-5 gap-y-3 border border-black rounded-md mt-4  w-full"
+              className="relative text-lg p-3 gap-y-3 border border-[#F6F6F6] rounded-md mt-4 h-[80px] w-full"
             >
-              <div className="flex justify-between items-center">
-                <div>
-                  <h1>{t.task}</h1>
-                  <span>{t.description}</span>
+              <div className="absolute left-0 top-0 h-[80px] w-2 bg-[#80BBE6] rounded-l-md"></div>
+
+              <div className="flex justify-between items-center pl-4 ">
+                <div
+                  className=" w-full"
+                  onClick={() => {
+                    setEditTask(t);
+                    setEditIndex(index);
+                  }}
+                >
+                  <h1 className="font-bold">{t.task}</h1>
+                  <span className=" font-light ">{t.description}</span>
                 </div>
-                <div className="space-x-4">
-                  <button onClick={() => completeTask(index)}>✔️</button>
-                  <button
-                    className="text-blue-500 hover:text-blue-700"
-                    onClick={() => {
-                      setEditTask(t);
-                      setEditIndex(index);
-                    }}
-                  >
-                    Edit
+                <div>
+                  <button onClick={() => completeTask(index)}>
+                    <FaRegCircle
+                    size={25}
+                      color="#C6D0D0"
+                      style={{ background: "#F6F6F6" , border:"#C6D0D0"  }}
+                    />
                   </button>
                 </div>
               </div>
@@ -54,21 +68,26 @@ const TodoList = () => {
       </div>
 
       {/* Completed Tasks */}
-      <div className="overflow-auto max-h-[200px] pb-20">
-        <h2 className="text-xl font-semibold mb-3">Completed</h2>
+      <h2 className="text-xl font-semibold mb-3">Completed</h2>
+      <div className="overflow-auto max-h-[500px] pb-20">
         {completeTasks.length === 0 ? (
-          <p className="text-xl">No task Completed!</p>
+          <p></p>
         ) : (
           completeTasks.map((t, index) => (
-            <section key={index} className="w-full mt-6">
-              <div className="p-5 border border-black opacity-45 rounded-md">
-                <div className="flex justify-between items-center">
-                  <div>
-                    <h1>{t.task}</h1>
-                    <span>{t.description}</span>
-                  </div>
-                  <button onClick={() => deleteTask(index)}>❌</button>
+            <section
+              key={index}
+              className="w-full text-lg mt-4 relative h-[80px] p-3 border border-[#E8E8E8] bg-[#EBEBEB] rounded-md"
+            >
+              <div className="absolute left-0 top-0 h-[80px] w-[8px] bg-[#80BBE6] rounded-l-md"></div>
+
+              <div className="flex justify-between items-center pl-3">
+                <div>
+                  <h1 className="font-bold">{t.task}</h1>
+                  <span className="font-light">{t.description}</span>
                 </div>
+                <button onClick={() => deleteTask(index)}>
+                  <FaRegCircleCheck style={{ color: "#80BBE6" }} size={25} />
+                </button>
               </div>
             </section>
           ))
